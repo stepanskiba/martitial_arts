@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import PriceModels, InstructorModels, UserModels
 
-#
-#
 from django.shortcuts import render, redirect
 from .models import UserModels
 
