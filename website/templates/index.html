@@ -58,29 +58,31 @@
 
 <h2 style="text-align: center;">Хотите записаться на занятие - заполните форму и мы вам перезвоним</h2>
 <div class="container mt-4">
-    <form action="https://www.google.com/" id="personalDataForm" method="get">
+    <form action="{% url 'website:index' %}" id="personalDataForm" method="post">
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="exampleLastName" class="form-label">Фамилия</label>
-            <input type="text" class="form-control" id="lastName" aria-describedby="lastNameHelp">
-            <div id="lastName" class="form-text">Введите фамилию с заглавной буквы</div>
+            <label for="lastName" class="form-label">Фамилия</label>
+            <input type="text" name="last_name" class="form-control" id="lastName" aria-describedby="lastNameHelp">
+            <div id="lastNameHelp" class="form-text">Введите фамилию с заглавной буквы</div>
         </div>
         <div class="mb-3">
-            <label for="exampleFirstName" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="firstName" aria-describedby="lastNameHelp">
-            <div id="firstName" class="form-text">Введите имя с заглавной буквы</div>
+            <label for="firstName" class="form-label">Имя</label>
+            <input type="text" name="first_name" class="form-control" id="firstName" aria-describedby="firstNameHelp">
+            <div id="firstNameHelp" class="form-text">Введите имя с заглавной буквы</div>
         </div>
         <div class="mb-3">
-            <label for="exampleFirstName" class="form-label">Номер телефона</label>
-            <input type="tel" class="form-control" id="firstName" aria-describedby="lastNameHelp">
-            <div id="firstName" class="form-text">Введите номер телефона</div>
+            <label for="phoneNumber" class="form-label">Номер телефона</label>
+            <input type="tel" name="phone_number" class="form-control" id="phoneNumber" aria-describedby="phoneNumberHelp">
+            <div id="phoneNumberHelp" class="form-text">Введите номер телефона</div>
         </div>
         <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Email</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp">
             <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
         </div>
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>
+
 </div>
 </body>
 </html>
