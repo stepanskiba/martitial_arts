@@ -1,0 +1,24 @@
+.active::after  {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #111;
+    height: 1px;
+}
+
+.instructor-name {
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+}
+
+.instructor-name:hover{
+    text-decoration: underline;
+    color: black;
+}
+
+.table-my-bg {
+    background-image: url("../images/table_bg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
