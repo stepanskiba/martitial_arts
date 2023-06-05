@@ -58,78 +58,20 @@
 </nav>
 
 <section class="main-content mt-4">
-    <div class="container mt-4 ">
-        <div class="d-flex justify-content-center">
-            <div class="col-lg-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Пробное занятие</h5>
-                        <p class="card-text">Абонемент на 1 занятие</p>
-                        <p class="card-text">Срок действия - 1 месяц</p>
-                        <p class="card-text">300 ₽</p>
-                        <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <h5 class="card-title">Разовое занятие</h5>
-                        <p class="card-text">Абонемент на 1 занятие</p>
-                        <p class="card-text">Срок действия - 1 месяц</p>
-                        <p class="card-text">600 ₽</p>
-                        <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="container mt-4">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">4 занятия</h5>
-                        <p class="card-text">Абонемент на 4 занятия</p>
-                        <p class="card-text">Срок действия - 1 месяц</p>
-                        <p class="card-text">2400 ₽</p>
-                        <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
+        <div class="row g-4">
+            {% for item in context %}
+                <div class="col-lg-3">
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.description }}</h5>
+                            <p class="card-text">Срок действия - 1 месяц</p>
+                            <p class="card-text">{{ item.cost }} ₽</p>
+                            <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">8 занятий</h5>
-                        <p class="card-text">Абонемент на 8 занятия</p>
-                        <p class="card-text">Срок действия - 1 месяц</p>
-                        <p class="card-text">4200 ₽</p>
-                        <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 100%">
-                    <div class="card-body">
-                        <h5 class="card-title">12 занятий</h5>
-                        <p class="card-text">Срок действия - 1 месяц</p>
-                        <p class="card-text">Абонемент на 12 занятий</p>
-                        <p class="card-text">6000 ₽</p>
-                        <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3">
-                <div class="card" style="width: 100%;">
-                    <div class="card-body">
-                        <h5 class="card-title">Безлимит</h5>
-                        <p class="card-text">Срок действия - 1 месяц</p>
-                        <p class="card-text">Неограниченное количество</p>
-                        <p class="card-text">8000 ₽</p>
-                        <a href="index.html#personalDataForm" class="btn btn-primary">Оформить</a>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>

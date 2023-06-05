@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from .models import PriceModels
 
 
 #
@@ -8,7 +9,13 @@ def index(request):
 
 
 def price(request):
-    return render(request, 'price.html')
+    object = PriceModels.objects.all()
+    print(object)
+    context = []
+    for i in range(len(object)):
+        context.append(object.values('description', 'number_of_trainings', 'cost')[i])
+
+    return render(request, 'price.html', {'context': context})
 
 
 def instructor(request):
