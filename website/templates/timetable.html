@@ -34,6 +34,9 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{% url 'website:timetable' %} ">Расписание</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:review' %} ">Отзывы</a>
+                </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
@@ -57,7 +60,6 @@
         </div>
     </div>
 </nav>
-
 <div class="container mt-4">
     <table class="table table-striped table-bordered table-my-bg">
         <thead>
@@ -79,104 +81,202 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>07:00-8:00</td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-        </tr>
-        <tr>
-            <td>07:00-8:00</td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-        </tr>
-        <tr>
-            <td>07:00-8:00</td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-        </tr>
-        <tr>
-            <td>07:00-8:00</td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-            <td>Карате<br>
-                Богатырев
-            </td>
-        </tr>
+        {% for slot in timetable_data %}
+            <tr>
+                <td>{{ slot.time_slot }}</td>
+                <td>
+                    {{ slot.пн_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.пн_instructor.instructor.surname }}">{{ slot.пн_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+                <td>
+                    {{ slot.вт_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.вт_instructor.instructor.surname }}">{{ slot.вт_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+                <td>
+                    {{ slot.ср_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.ср_instructor.instructor.surname }}">{{ slot.ср_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+                <td>
+                    {{ slot.чт_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.чт_instructor.instructor.surname }}">{{ slot.чт_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+                <td>
+                    {{ slot.пт_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.пт_instructor.instructor.surname }}">{{ slot.пт_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+                <td>
+                    {{ slot.сб_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.сб_instructor.instructor.surname }}">{{ slot.сб_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+                <td>
+                    {{ slot.вс_instructor.direction }}<br>
+                    <a href="/instructor/#{{ slot.вс_instructor.instructor.surname }}">{{ slot.вс_instructor.instructor.surname|default_if_none:"" }}</a>
+                </td>
+            </tr>
+        {% endfor %}
         </tbody>
     </table>
+</div>
+
+
+{##}
+{#<div class="container mt-4">#}
+{#    <table class="table table-striped table-bordered table-my-bg">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>#}
+{#                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock"#}
+{#                     viewBox="0 0 16 16">#}
+{#                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>#}
+{#                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>#}
+{#                </svg>#}
+{#            </th>#}
+{#            <th>Пн</th>#}
+{#            <th>Вт</th>#}
+{#            <th>Ср</th>#}
+{#            <th>Чт</th>#}
+{#            <th>Пт</th>#}
+{#            <th>Сб</th>#}
+{#            <th>Вс</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        {% for slot in timetable_data %}#}
+{#        <tr>#}
+{#            <td>{{ slot.time_slot }}</td>#}
+{#            <td>{{ slot.monday_instructor }}</td>#}
+{#            <td>{{ slot.tuesday_instructor }}</td>#}
+{#            <td>{{ slot.wednesday_instructor }}</td>#}
+{#            <td>{{ slot.thursday_instructor }}</td>#}
+{#            <td>{{ slot.friday_instructor }}</td>#}
+{#            <td>{{ slot.saturday_instructor }}</td>#}
+{#            <td>{{ slot.sunday_instructor }}</td>#}
+{#        </tr>#}
+{#        {% endfor %}#}
+{#        </tbody>#}
+{#    </table>#}
+{#</div>#}
+{##}
+{##}
+{#<div class="container mt-4">#}
+{#    <table class="table table-striped table-bordered table-my-bg">#}
+{#        <thead>#}
+{#        <tr>#}
+{#            <th>#}
+{#                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-clock"#}
+{#                     viewBox="0 0 16 16">#}
+{#                    <path d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"/>#}
+{#                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"/>#}
+{#                </svg>#}
+{#            </th>#}
+{#            <th>Пн</th>#}
+{#            <th>Вт</th>#}
+{#            <th>Ср</th>#}
+{#            <th>Чт</th>#}
+{#            <th>Пт</th>#}
+{#            <th>Сб</th>#}
+{#            <th>Вс</th>#}
+{#        </tr>#}
+{#        </thead>#}
+{#        <tbody>#}
+{#        <tr>#}
+{#            <td>07:00-8:00</td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>07:00-8:00</td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>08:00-9:00</td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#        </tr>#}
+{#        <tr>#}
+{#            <td>09:00-10:00</td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#            <td>Карате<br>#}
+{#                Богатырев#}
+{#            </td>#}
+{#        </tr>#}
+{#        </tbody>#}
+{#    </table>#}
 </div>
 
 </body>

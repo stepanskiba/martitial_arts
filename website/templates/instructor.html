@@ -32,7 +32,10 @@
                     <a class="nav-link active" aria-current="page" href="{% url 'website:instructor' %}">Тренеры</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{% url 'website:timetable' %} ">Расписание</a>
+                    <a class="nav-link" href="{% url 'website:timetable' %}">Расписание</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'website:review' %} ">Отзывы</a>
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -58,34 +61,65 @@
     </div>
 </nav>
 
-
 <section class="main-content mt-4">
-    <div class="container mt-4 ">
+    <div class="container mt-4">
         <div class="row g-4">
             {% for item in context %}
                 <div class="col-lg-3">
                     <div class="card" style="width: 100%;">
-                        <img src="../static/images/{{ item.surname }}.jpg" class="card-img-top" alt="...">
+                        <img src="../static/images/{{ item.instructor.surname }}.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <a href="#" class="instructor-name">{{ item.FIO }}</a>
+                            <a href="#{{ item.instructor.surname }}"
+                               class="instructor-name">{{ item.instructor.FIO }}</a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-
         </div>
+    </div>
+
+    <div class="container mt-4">
+        <style>
+            /* Добавляем стили для изображений */
+            .teacher-img {
+                width: 100%;
+                height: auto;
+                margin-bottom: 10px; /* Задаем расстояние между изображениями */
+            }
+        </style>
+
+
+{% for item in context %}
+    <div class="row" id="{{ item.instructor.surname }}">
+        <div class="col-lg-4">
+            <img class="teacher-img" src="../static/images/{{ item.instructor.surname }}.jpg" alt="...">
+        </div>
+        <div class="col-lg-8">
+            <h1>{{ item.instructor.FIO }}</h1>
+            {% for type, info_list in item.information.items %}
+                {% if type == 'Направления' %}
+                    <h3>{{ type }}:</h3>
+                    <ol>
+                        {% for info in info_list %}
+                            <li>{{ info }}</li>
+                        {% endfor %}
+                    </ol>
+                {% else %}
+                    <h3>{{ type }}:</h3>
+                    <ul>
+                        {% for info in info_list %}
+                            <li>{{ info }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+{% endfor %}
+
 
     </div>
 </section>
-<div class="container mt-4">
-    <div class="row">
-        <div class="col-lg-4">
-            <img src="../static/images/Богатырев.jpg" alt="...">
-        </div>
-        <div class="col-lg-8">
-            <h1>Богатырев Арсений Владимирович</h1>
-        </div>
-    </div>
-</div>
+
 </body>
 </html>
