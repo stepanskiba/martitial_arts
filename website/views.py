@@ -28,6 +28,7 @@ def price(request):
 
     return render(request, 'price.html', {'context': context})
 
+
 def instructor(request):
     instructors = InstructorModels.objects.all()
     context = []
@@ -51,26 +52,6 @@ def instructor(request):
         })
 
     return render(request, 'instructor.html', {'context': context})
-
-# def instructor(request):
-#     instructors = InstructorModels.objects.all()
-#     context = []
-#
-#     for instructor in instructors:
-#         information = InformationOfInstructorModels.objects.filter(instructor__surname=instructor.surname)
-#         grouped_info = {}
-#
-#         for info in information:
-#             if info.type not in grouped_info:
-#                 grouped_info[info.type] = []
-#             grouped_info[info.type].append(info.information)
-#
-#         context.append({
-#             'instructor': instructor,
-#             'information': grouped_info
-#         })
-#
-#     return render(request, 'instructor.html', {'context': context})
 
 
 def timetable(request):
