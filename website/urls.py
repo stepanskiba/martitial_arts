@@ -10,3 +10,5 @@ urlpatterns = [
     path('timetable/', views.timetable, name='timetable'),
     path('review/', views.review, name='review')
 ]
+
+#super commit
