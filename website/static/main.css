@@ -17,8 +17,15 @@
     color: black;
 }
 
-.table-my-bg {
-    background-image: url("../images/table_bg.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+.dark-img {
+    filter: brightness(0.3); /* Уменьшите значение, чтобы сделать затемнение более интенсивным */
+}
+
+.img-fluid {
+    height: 600px;
+    object-fit: cover;
+}
+
+body {
+    background: #f5f5f5;
 }
